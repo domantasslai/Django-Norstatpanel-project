@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+
+<div class="container">
+  <div class="row">
+      <div class="col">
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+          <ul>
+            {% for choice in poll.choice_set.all %}
+              <li>{{choice.choice_text}}</li>
+            {% endfor %}
+          </ul>
+      </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+
+<div class="container">
+  <h1 class="display-4 text-center text-secondary">
+      {% if edit_mode %}
+        Edit the choice of the:
+      {% else %}
+        Add a new choice to:
+      {% endif %}
+  </h1>
+  <p>{{poll}}</p>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          {{ field.errors }}
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" name="" value="Add" class="btn btn-info" align="center">
+        {% if edit_mode %}
+          <a href="{% url 'polls:choice_confirm_delete' choice.id %}"
+              class='btn btn-danger'>
+              <i class="far fa-trash-alt"></i> Delete
+          </a>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

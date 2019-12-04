@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+  <link rel="stylesheet" type="text/css" href="{% static '../css/home_styles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<style>
+  body{
+    background-image: url('https://raw.githubusercontent.com/highfivecode/PollMe---Django-2.0/master/static/img/mikael_kristenson_unsplash_background.jpg');
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  h1,h3{
+    color: black;
+  }
+
+  #home-content{
+    text-align: center;
+    padding-top: 20%;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="home-content">
+        <h1>Norstat - Get Started!</h1>
+        <h3>Your Voice Matters!</h3>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+{% if user.is_superuser %}
+
+<div class="container">
+  <h1 class="display-4 text-center text-secondary">
+    Edit Poll
+  </h1>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          {{ field.errors }}
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" name="" value="submit" class="btn btn-info" align="center">
+        <a href="{% url 'polls:add_choice' poll.id %}" class="btn btn-info">Add choice</a>
+        <a href="{% url 'polls:poll_confirm_delete' poll.id %}"
+            class='btn btn-danger'>
+            <i class="far fa-trash-alt"></i> Delete
+        </a>
+      </form>
+
+      <div class="display-5 text-center text-secondary" style="margin-top:5%;">Choices</div>
+
+        {% for choice in poll.choice_set.all %}
+              <p><a href="{% url 'polls:edit_choice' choice.id %}">
+                <i class="fa fa-pencil-square-o" style="padding-right: 3%;"></i></a>{{choice.choice_text}}
+              </p>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

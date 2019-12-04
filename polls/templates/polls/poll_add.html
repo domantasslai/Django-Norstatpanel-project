@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+<div class="container">
+  <h1 class="display-4 text-center text-secondary">
+    Add Poll
+  </h1>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          {{ field.errors }}
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" name="" value="add" class="btn btn-info" align="center">
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
