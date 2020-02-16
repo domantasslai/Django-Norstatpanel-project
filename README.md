@@ -1,6 +1,6 @@
 ## Apie projektą
 
-Norstat panel, kuriame kiekvienas naudotojas gali:
+Norstatpanel, kuriame kiekvienas naudotojas gali:
 
 - Registruoto vartotojo Use case:
     - Užsiregistruoti;
